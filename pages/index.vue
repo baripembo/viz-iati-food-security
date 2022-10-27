@@ -120,7 +120,7 @@
             </v-select>
           </b-col>
           <b-col>
-            <b-row>
+            <!-- <b-row>
               <b-col>
                 Filter for HRP related transactions
                 <b-badge
@@ -146,7 +146,7 @@
                 </b-button-group>
               </b-col>
             </b-row>
-            <hr class="my-3">
+            <hr class="my-3"> -->
             <b-row>
               <b-col>
                 Only show humanitarian transactions
