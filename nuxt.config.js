@@ -17,9 +17,9 @@ export default {
       { hid: 'description', name: 'description', content: 'This site allows you to explore all of the published International Aid Transparency Initiative (IATI) data that is related to food security funding data.' },
       { name: 'twitter:card', content: 'summary' },
       { name: 'twitter:site', content: '@humdata' },
-      { name: 'twitter:title', content: 'IATI Ukraine Funding Dashboard' },
+      { name: 'twitter:title', content: 'IATI Food Security Funding Dashboard' },
       { name: 'twitter:description', content: 'This site allows you to explore all of the published International Aid Transparency Initiative (IATI) data that is related to food security funding data.' },
-      { name: 'twitter:image', content: 'https://baripembo.github.io/viz-iati-funding-security/preview.png' },
+      { name: 'twitter:image', content: 'https://baripembo.github.io/viz-iati-food-security/preview.png' },
       { name: 'twitter:image:alt', content: 'Contributions to food security funding data.' }
     ],
     link: [
