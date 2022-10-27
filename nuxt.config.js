@@ -1,7 +1,7 @@
 const routerBase = process.env.DEPLOY_ENV === 'WITH_SUBFOLDER'
   ? {
       router: {
-        base: '/viz-iati-ukraine'
+        base: '/viz-iati-food-security'
       }
     }
   : {}
@@ -10,17 +10,17 @@ export default {
   ** Headers of the page
   */
   head: {
-    title: 'IATI Ukraine Funding Dashboard',
+    title: 'IATI Food Security Funding Dashboard',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'This site allows you to explore all of the published International Aid Transparency Initiative (IATI) data that is related to Ukraine funding data.' },
+      { hid: 'description', name: 'description', content: 'This site allows you to explore all of the published International Aid Transparency Initiative (IATI) data that is related to food security funding data.' },
       { name: 'twitter:card', content: 'summary' },
       { name: 'twitter:site', content: '@humdata' },
-      { name: 'twitter:title', content: 'IATI Ukraine Funding Dashboard' },
-      { name: 'twitter:description', content: 'This site allows you to explore all of the published International Aid Transparency Initiative (IATI) data that is related to Ukraine funding data.' },
-      { name: 'twitter:image', content: 'https://ocha-dap.github.io/viz-iati-c19-dashboard/preview.png' },
-      { name: 'twitter:image:alt', content: 'Contributions to Ukraine funding data.' }
+      { name: 'twitter:title', content: 'IATI Food Security Funding Dashboard' },
+      { name: 'twitter:description', content: 'This site allows you to explore all of the published International Aid Transparency Initiative (IATI) data that is related to food security funding data.' },
+      { name: 'twitter:image', content: '' },
+      { name: 'twitter:image:alt', content: 'Contributions to food security funding data.' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: 'https://data.humdata.org/images/icons/hdx.ico' },

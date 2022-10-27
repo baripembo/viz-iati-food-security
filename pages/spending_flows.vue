@@ -219,7 +219,7 @@ export default {
     }
     this.filterParams['#org+id+reporting'] = this.selectedFilter
 
-    const dataPath = 'https://raw.githubusercontent.com/OCHA-DAP/hdx-scraper-iati-viz/gh-pages/ukraine/reporting_orgs.json'
+    const dataPath = 'https://raw.githubusercontent.com/OCHA-DAP/hdx-scraper-iati-viz/gh-pages/foodsecurity/reporting_orgs.json'
     axios.get(dataPath)
       .then((response) => {
         this.orgNameIndex = response.data.data
@@ -244,7 +244,7 @@ export default {
   methods: {
     async loadData () {
       const filePath = (config.dev) ? '' : '/viz-iati-ukraine/'
-      const dataPath = 'https://raw.githubusercontent.com/OCHA-DAP/hdx-scraper-iati-viz/gh-pages/ukraine/flows.json'
+      const dataPath = 'https://raw.githubusercontent.com/OCHA-DAP/hdx-scraper-iati-viz/gh-pages/foodsecurity/flows.json'
       await axios.get(filePath + 'tooltips.csv')
         .then((response) => {
           return csvtojson().fromString(response.data).then((jsonData) => {

@@ -7,14 +7,13 @@
       class="download-button"
       variant="outline-dark"
       @click="onClick($event)">
-      <b-dropdown-item @click="downloadAllData()">
+<!--       <b-dropdown-item @click="downloadAllData()">
         View data on HDX
-      </b-dropdown-item>
-    </b-dropdown>
-
-    <!--     <div class="text-center pt-2">
+      </b-dropdown-item> -->
+      </b-dropdown>
+        <div class="text-center pt-2">
       <a href="https://docs.google.com/forms/d/e/1FAIpQLScVyHQpbZcyc5l__q-X1GNrYzKWN2tUWqUUqjzQIPJ2uECbgg/viewform" target="_blank" class="feedback-link">Send us feedback <div class="icon-warning" /></a>
-    </div> -->
+    </div>
   </div>
 </template>
 
@@ -83,7 +82,7 @@ export default {
     proxyLinkTransactions (selectionValue, selectionType, isHumanitarian, isStrict) {
       // the GET parameters that we'll pass to the HXL Proxy
       const params = {
-        url: 'https://ocha-dap.github.io/hdx-scraper-iati-viz/transactions.csv'
+        url: 'https://ocha-dap.github.io/hdx-scraper-iati-viz/foodsecurity/transactions.csv'
       }
 
       // filter rows by the primary selector (a single org, sector, or country)
@@ -143,7 +142,7 @@ export default {
     proxyLinkFlows (reportingOrgId, isHumanitarian, isStrict) {
       // the GET parameters that we'll pass to the HXL Proxy
       const params = {
-        url: 'https://ocha-dap.github.io/hdx-scraper-iati-viz/flows.csv'
+        url: 'https://ocha-dap.github.io/hdx-scraper-iati-viz/foodsecurity/flows.csv'
       }
 
       // filter rows by the reporting org id (if supplied)
