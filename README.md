@@ -1,6 +1,6 @@
-# Covid-19 visualization
+# IATI Food Security Funding visualization
 
-A simple visualization using published IATI data on Covid-19.
+A simple visualization using published IATI data on food security funding.
 
 Data is generated nightly by the [OCHA-DAP/hdx-scraper-iati-viz](https://github.com/ocha-dap/hdx-scraper-iati-viz) repository.
 
