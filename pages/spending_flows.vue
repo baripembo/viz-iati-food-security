@@ -243,7 +243,7 @@ export default {
   },
   methods: {
     async loadData () {
-      const filePath = (config.dev) ? '' : '/viz-iati-ukraine/'
+      const filePath = (config.dev) ? '' : '/viz-iati-food-security/'
       const dataPath = 'https://raw.githubusercontent.com/OCHA-DAP/hdx-scraper-iati-viz/gh-pages/foodsecurity/flows.json'
       await axios.get(filePath + 'tooltips.csv')
         .then((response) => {
