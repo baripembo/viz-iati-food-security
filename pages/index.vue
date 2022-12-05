@@ -122,7 +122,7 @@
           <b-col>
             <b-row>
               <b-col>
-                Filter for HRP related transactions
+                Filter to activities that use "Food Security" text
                 <b-badge
                   v-b-tooltip.hover
                   class="info-icon p-0"
