@@ -120,9 +120,9 @@
             </v-select>
           </b-col>
           <b-col>
-            <!-- <b-row>
+            <b-row>
               <b-col>
-                Filter for HRP related transactions
+                Filter to activities that use "Food Security" text
                 <b-badge
                   v-b-tooltip.hover
                   class="info-icon p-0"
@@ -146,7 +146,7 @@
                 </b-button-group>
               </b-col>
             </b-row>
-            <hr class="my-3"> -->
+            <hr class="my-3">
             <b-row>
               <b-col>
                 Only show humanitarian transactions
@@ -575,7 +575,7 @@ export default {
   },
   methods: {
     async loadData () {
-      const filePath = (config.dev) ? '' : '/viz-iati-ukraine/'
+      const filePath = (config.dev) ? '' : '/viz-iati-food-security/'
       const dataPath = 'https://raw.githubusercontent.com/OCHA-DAP/hdx-scraper-iati-viz/gh-pages/foodsecurity/transactions.json'
       await axios.get(filePath + 'tooltips.csv')
         .then((response) => {
