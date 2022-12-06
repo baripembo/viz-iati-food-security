@@ -357,11 +357,11 @@ export default {
           { text: 'By Publishing Org', value: '#org+id' }
         ]
       ],
-      timeseriesSelect: 'Cumulative and Yearly Commitments/Spending',
+      timeseriesSelect: 'Cumulative and Monthly Commitments/Spending',
       timeseriesSelectOptions: [
-        'Cumulative and Yearly Commitments/Spending',
+        'Cumulative and Monthly Commitments/Spending',
         'Cumulative Commitments/Spending',
-        'Yearly Commitments/Spending'
+        'Monthly Commitments/Spending'
       ],
       strictToggleOptions: [
         { label: 'Loose', value: 'off' },
@@ -479,47 +479,46 @@ export default {
     },
     timeseriesData () {
       const ref = this
-      // const dates = [...new Set(this.filteredData.map(item => item['#date+month']))]
-      const yearlyDates = [...new Set(this.filteredData.map(item => item['#date+year']))]
+      const dates = [...new Set(this.filteredData.map(item => item['#date+month']))]
+      // const yearlyDates = [...new Set(this.filteredData.map(item => item['#date+year']))]
 
-      // const monthlyCommitments = Object.values(this.commitments.reduce((acc, item) => {
-      //   let val = Number(item[ref.tagPattern])
-      //   val = (val < 0) ? 0 : val
-      //   acc[item['#date+month']] = acc[item['#date+month']] + val || val
-      //   // console.log(acc)
-      //   return acc
-      // }, []))
-
-      // const monthlySpending = Object.values(this.spending.reduce((acc, item) => {
-      //   let val = Number(item[ref.tagPattern])
-      //   val = (val < 0) ? 0 : val
-      //   acc[item['#date+month']] = acc[item['#date+month']] + val || val
-      //   return acc
-      // }, []))
-
-      const yearlyCommitments = Object.values(this.commitments.reduce((acc, item) => {
+      const monthlyCommitments = Object.values(this.commitments.reduce((acc, item) => {
         let val = Number(item[ref.tagPattern])
         val = (val < 0) ? 0 : val
-        acc[item['#date+year']] = acc[item['#date+year']] + val || val
+        acc[item['#date+month']] = acc[item['#date+month']] + val || val
         return acc
       }, []))
 
-      const yearlySpending = Object.values(this.spending.reduce((acc, item) => {
+      const monthlySpending = Object.values(this.spending.reduce((acc, item) => {
         let val = Number(item[ref.tagPattern])
         val = (val < 0) ? 0 : val
-        acc[item['#date+year']] = acc[item['#date+year']] + val || val
+        acc[item['#date+month']] = acc[item['#date+month']] + val || val
         return acc
       }, []))
+
+      // const yearlyCommitments = Object.values(this.commitments.reduce((acc, item) => {
+      //   let val = Number(item[ref.tagPattern])
+      //   val = (val < 0) ? 0 : val
+      //   acc[item['#date+year']] = acc[item['#date+year']] + val || val
+      //   return acc
+      // }, []))
+
+      // const yearlySpending = Object.values(this.spending.reduce((acc, item) => {
+      //   let val = Number(item[ref.tagPattern])
+      //   val = (val < 0) ? 0 : val
+      //   acc[item['#date+year']] = acc[item['#date+year']] + val || val
+      //   return acc
+      // }, []))
 
       return {
-        yearlyDates,
-        yearly: {
-          commitments: yearlyCommitments,
-          spending: yearlySpending
+        dates,
+        monthly: {
+          commitments: monthlyCommitments,
+          spending: monthlySpending
         },
         cumulative: {
-          commitments: this.getCumulativeSeries(yearlyCommitments),
-          spending: this.getCumulativeSeries(yearlySpending)
+          commitments: this.getCumulativeSeries(monthlyCommitments),
+          spending: this.getCumulativeSeries(monthlySpending)
         }
       }
     }
