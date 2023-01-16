@@ -122,7 +122,7 @@
           <b-col>
             <b-row>
               <b-col>
-                Filter for HRP related transactions
+                Filter to activities that use "Food Security" text
                 <b-badge
                   v-b-tooltip.hover
                   class="info-icon p-0"
@@ -441,15 +441,15 @@ export default {
       return this.getRankedList(this.spending)
     },
     orgCount () {
-      const orgs = [...new Set(this.fullData.map(item => item['#org+id']))]
+      const orgs = [...new Set(this.filteredData.map(item => item['#org+id']))]
       return orgs.length
     },
     countryCount () {
-      const countries = [...new Set(this.fullData.map(item => item['#country']))]
+      const countries = [...new Set(this.filteredData.map(item => item['#country']))]
       return countries.length
     },
     sectorCount () {
-      const sector = [...new Set(this.fullData.map(item => item['#sector']))]
+      const sector = [...new Set(this.filteredData.map(item => item['#sector']))]
       return sector.length
     },
     activityCount () {
@@ -525,8 +525,6 @@ export default {
         this.orgNameIndex = response.data.data
         this.$store.commit('setOrgNameIndex', response.data.data)
 
-        // this.selectedFilterLabel = this.orgNameIndex.length + ' publishing organizations'
-
         this.$nextTick(() => {
           if ('org' in this.$route.query) {
             this.filterParams['#org+id'] = this.$route.query.org
@@ -581,9 +579,10 @@ export default {
           this.filteredData = this.filterData()
 
           // set intitial filter label
-          if (Object.keys(this.$route.query).length < 1) {
-            const count = this.orgCount
-            this.selectedFilterLabel = count + ' publishing organizations'
+          if (this.selectedFilter !== '*') {
+            this.selectedFilterLabel = (this.selectedFilterDimension === '#org+id') ? this.getOrgName(this.selectedFilter) : this.selectedFilter
+          } else {
+            this.setDefaultFilterLabel(this.selectedFilterDimension)
           }
         })
     },
@@ -645,23 +644,28 @@ export default {
         this.setDefaultFilterLabel(this.selectedFilterDimension)
       }
       this.updateFilteredData()
-      // this.$mixpanelTrackAction('change content', 'Commitments and Spending Breakdown select filter', value)
+      this.$mixpanelTrackAction('change content', 'Commitments and Spending Breakdown select filter', value)
     },
     onToggle (event) {
       this.filterParams[event.target.parentElement.id] = event.target.value
       this.updateFilteredData()
-      // this.$mixpanelTrackAction('change content', 'Commitments and Spending Breakdown toggle filter', event.target.parentElement.id + ' ' + event.target.value)
+
+      if (this.selectedFilter !== '*') {
+        this.selectedFilterLabel = (this.selectedFilterDimension === '#org+id') ? this.getOrgName(this.selectedFilter) : this.selectedFilter
+      } else {
+        this.setDefaultFilterLabel(this.selectedFilterDimension)
+      }
+
+      this.$mixpanelTrackAction('change content', 'Commitments and Spending Breakdown toggle filter', event.target.parentElement.id + ' ' + event.target.value)
     },
     onSelectRanking (value) {
-      // this.$mixpanelTrackAction('change content', 'Commitments and Spending Ranking select filter', value)
+      this.$mixpanelTrackAction('change content', 'Commitments and Spending Ranking select filter', value)
     },
     onSelectTimeline (value) {
-      // this.$mixpanelTrackAction('change content', 'Commitments and Spending Timeline select filter', value)
+      this.$mixpanelTrackAction('change content', 'Commitments and Spending Timeline select filter', value)
     },
     setDefaultFilterLabel (dimension) {
       const filterOption = this.filterOptions.filter(option => option.value === dimension)
-      // this.selectedFilterLabel = filterOption[0].label.toLowerCase()
-
       let count = ''
       if (dimension === '#org+id') {
         count = this.orgCount
@@ -670,6 +674,7 @@ export default {
       } else {
         count = this.sectorCount
       }
+
       this.selectedFilterLabel = count + ' ' + filterOption[0].label.toLowerCase()
     },
     updateFilteredData () {

@@ -7,12 +7,16 @@
       class="download-button"
       variant="outline-dark"
       @click="onClick($event)">
-<!--       <b-dropdown-item @click="downloadAllData()">
+      <!--       <b-dropdown-item @click="downloadAllData()">
         View data on HDX
       </b-dropdown-item> -->
-      </b-dropdown>
-        <div class="text-center pt-2">
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLScVyHQpbZcyc5l__q-X1GNrYzKWN2tUWqUUqjzQIPJ2uECbgg/viewform" target="_blank" class="feedback-link">Send us feedback <div class="icon-warning" /></a>
+
+      <b-dropdown-item @click="downloadFilteredData()">
+        View filtered data
+      </b-dropdown-item>
+    </b-dropdown>
+    <div class="text-center pt-2">
+      <!-- <a href="https://docs.google.com/forms/d/e/1FAIpQLScVyHQpbZcyc5l__q-X1GNrYzKWN2tUWqUUqjzQIPJ2uECbgg/viewform" target="_blank" class="feedback-link">Send us feedback <div class="icon-warning" /></a> -->
     </div>
   </div>
 </template>

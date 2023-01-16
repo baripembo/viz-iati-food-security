@@ -17,11 +17,11 @@
               Spending Flows
             </b-nav-item>
           </b-navbar-nav>
-          <b-navbar-nav class="ml-auto">
+          <!-- <b-navbar-nav class="ml-auto">
             <b-nav-item :to="{name: 'about'}" active-class="active" class="ml-lg-auto nav-about" no-prefetch @click="onClick('About this Dashboard')">
               About this Dashboard
             </b-nav-item>
-          </b-navbar-nav>
+          </b-navbar-nav> -->
         </b-collapse>
       </b-navbar>
       <nuxt class="main-content" />
